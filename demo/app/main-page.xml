@@ -1,0 +1,10 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
+  xmlns:ui="nativescript-nativemediapicker">
+  <ScrollView>
+    <StackLayout class="p-20">
+      <Label id="mainText" text="" class="t-20 text-center c-black" textWrap="true"/>
+      <Button class="btn btn-primary btn-active" id="button" text="Select files" tap="onSelectFiles"></Button>
+      <Button class="btn btn-primary btn-active" id="button" text="Capture" tap="onCapture"></Button>
+    </StackLayout>
+  </ScrollView>
+</Page>

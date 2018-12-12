@@ -24,27 +24,27 @@ tns plugin add nativescript-nativemediapicker
 ## Android Permissions Required
 
 ```javascript
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
+<uses-permission android:name="android.permission.CAMERA"/>
+<uses-feature android:name="android.hardware.camera" android:required="true" />
 ```
 
 **Add FileProvider to support (>=Android N) (create file_paths.xml in "app\App_Resources\Android\src\main\res\xml" & copy-paste following code)**
 ```javascript
-    <?xml version="1.0" encoding="utf-8"?>
-	<paths>
-        <files-path path="demo/" name="myfiles" />
-        <external-path name="mediafiles" path="." />
-	</paths>
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path path="demo/" name="myfiles" />
+    <external-path name="mediafiles" path="." />
+</paths>
 ```
 
 **Add FileProvider tag to application tag in AndroidManifest.xml**
 ```javascript
-    <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.provider" android:grantUriPermissions="true" android:exported="false">
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
-    </provider>
+<provider android:name="android.support.v4.content.FileProvider" android:authorities="{applicationId}.provider" android:grantUriPermissions="true" android:exported="false">
+    <meta-data android:name="android.support.FILE_PROVIDER_PATHS"android:resource="@xml/file_paths" />
+</provider>
 ```
 
 ## Usage (Please check demo project for details)
@@ -64,52 +64,52 @@ import { Nativemediapicker } from 'nativescript-nativemediapicker';
 **File Picker**
 ```javascript
 // replace first parameter with your mime type
-    Nativemediapicker.pickFiles("image/*",
-        function(res){
-			console.log(res);
-		},
-        function(err){
-			console.log(err);
-		});
+Nativemediapicker.pickFiles("image/*",
+    function(res){
+		console.log(res);
+	},
+    function(err){
+		console.log(err);
+	});
 ```
 
 
 **Capture Image**
 ```javascript
 // registerFileProvider is needed to capture image
-            Nativemediapicker.registerFileProvider(
-              application.android.currentContext.getPackageName() +
-                ".provider"
-            );
-    Nativemediapicker.takePicture(
-        function(res){
-			console.log(res);
-		},
-        function(err){
-			console.log(err);
-		});
+Nativemediapicker.registerFileProvider(
+      application.android.currentContext.getPackageName() +
+        ".provider"
+    );
+Nativemediapicker.takePicture(
+    function(res){
+		console.log(res);
+	},
+    function(err){
+		console.log(err);
+	});
 ```
 
 **Capture Video**
 ```javascript
-    Nativemediapicker.recordVideo(
-        function(res){
-			console.log(res);
-		},
-        function(err){
-			console.log(err);
-		});
+Nativemediapicker.recordVideo(
+    function(res){
+		console.log(res);
+	},
+    function(err){
+		console.log(err);
+	});
 ```
 
 **Capture Audio**
 ```javascript
-    Nativemediapicker.recordAudio(
-        function(res){
-			console.log(res);
-		},
-        function(err){
-			console.log(err);
-		});
+Nativemediapicker.recordAudio(
+    function(res){
+    	console.log(res);
+    },
+    function(err){
+    	console.log(err);
+    });
 ```
 
 
