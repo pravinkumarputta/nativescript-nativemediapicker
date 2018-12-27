@@ -117,9 +117,9 @@ Nativemediapicker.recordAudio(
 
 **Android**
 
-![Android](/screenshots/android/demo.png)
-![Android](/screenshots/android/filepicker.png)
-![Android](/screenshots/android/capture.png)
+![Android](https://raw.githubusercontent.com/pravinkumarputta/nativescript-nativemediapicker/master/screenshots/android/demo.png)
+![Android](https://raw.githubusercontent.com/pravinkumarputta/nativescript-nativemediapicker/master/screenshots/android/filepicker.png)
+![Android](https://raw.githubusercontent.com/pravinkumarputta/nativescript-nativemediapicker/master/screenshots/android/capture.png)
 
 
 ## License

@@ -1,6 +1,6 @@
 {
     "name": "nativescript-nativemediapicker",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This plugin is for accessing files from storage & capturing media like photo, audio, video etc.",
     "main": "nativemediapicker",
     "typings": "index.d.ts",
