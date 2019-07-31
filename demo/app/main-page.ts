@@ -52,7 +52,7 @@ export function onCapture(args: observable.EventData) {
             console.log(result);
             if (result === "Image") {
                 Nativemediapicker.registerFileProvider(
-                    application.android.currentContext.getPackageName() +
+                    application.android.foregroundActivity.getPackageName() +
                     ".fileprovider"
                 );
                 Nativemediapicker.takePicture(
