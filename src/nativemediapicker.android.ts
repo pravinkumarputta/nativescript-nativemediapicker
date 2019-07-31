@@ -307,7 +307,7 @@ export default class RealPathUtil {
         ];
         let result = null;
 
-        let v4Lib = useAndroidX() ? android.v4 : android.support.v4;
+        let v4Lib = useAndroidX() ? android.support.v4 : android.v4;
         let cursorLoader = new v4Lib.content.CursorLoader(context, contentUri, proj, null, null, null);
         let cursor = cursorLoader.loadInBackground();
 
