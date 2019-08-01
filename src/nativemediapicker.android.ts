@@ -25,7 +25,7 @@ export class Nativemediapicker {
     }
     get() {
         let PackageManager = android.content.pm.PackageManager;
-        let pkg = application.android.foregroundActivity.getPackageManager().getPackageInfo(application.android.foregroundActivity.getPackageName(),
+        let pkg = application.android.startActivity.getPackageManager().getPackageInfo(application.android.startActivity.getPackageName(),
             PackageManager.GET_META_DATA);
         return pkg.versionName;
     }
@@ -93,10 +93,10 @@ export class Nativemediapicker {
 
         if (
             pickFilesIntent.resolveActivity(
-                application.android.foregroundActivity.getPackageManager()
+                application.android.startActivity.getPackageManager()
             ) != null
         ) {
-            application.android.foregroundActivity.startActivityForResult(
+            application.android.startActivity.startActivityForResult(
                 android.content.Intent.createChooser(
                     pickFilesIntent,
                     "Select files"
@@ -125,7 +125,7 @@ export class Nativemediapicker {
             args.resultCode === android.app.Activity.RESULT_OK
         ) {
             let path = RealPathUtil.getRealPath(
-                application.android.foregroundActivity,
+                application.android.startActivity,
                 args.intent.getData()
             );
             selectedFiles.push({
@@ -139,7 +139,7 @@ export class Nativemediapicker {
             args.resultCode === android.app.Activity.RESULT_OK
         ) {
             let path = RealPathUtil.getRealPath(
-                application.android.foregroundActivity,
+                application.android.startActivity,
                 args.intent.getData()
             );
             selectedFiles.push({
@@ -161,7 +161,7 @@ export class Nativemediapicker {
                             .getItemAt(i)
                             .getUri();
                         let path = RealPathUtil.getRealPath(
-                            application.android.foregroundActivity,
+                            application.android.startActivity,
                             uri
                         );
                         selectedFiles.push({
@@ -172,7 +172,7 @@ export class Nativemediapicker {
                 } else {
                     let uri = data.getData();
                     let path = RealPathUtil.getRealPath(
-                        application.android.foregroundActivity,
+                        application.android.startActivity,
                         uri
                     );
                     selectedFiles.push({
@@ -195,7 +195,7 @@ export class Nativemediapicker {
         // Ensure that there's a camera activity to handle the intent
         if (
             takePictureIntent.resolveActivity(
-                application.android.foregroundActivity.getPackageManager()
+                application.android.startActivity.getPackageManager()
             ) != null
         ) {
             // Create the File where the photo should go
@@ -209,11 +209,11 @@ export class Nativemediapicker {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 this.imagePath = (useAndroidX()) ? androidx.core.content.FileProvider.getUriForFile(
-                    application.android.foregroundActivity,
+                    application.android.startActivity,
                     fileProvider,
                     photoFile
                 ) : android.support.v4.content.FileProvider.getUriForFile(
-                    application.android.foregroundActivity,
+                    application.android.startActivity,
                     fileProvider,
                     photoFile
                 );
@@ -221,7 +221,7 @@ export class Nativemediapicker {
                     android.provider.MediaStore.EXTRA_OUTPUT,
                     this.imagePath
                 );
-                application.android.foregroundActivity.startActivityForResult(
+                application.android.startActivity.startActivityForResult(
                     takePictureIntent,
                     this.REQ_IMAGE
                 );
@@ -236,7 +236,7 @@ export class Nativemediapicker {
                 "yyyyMMdd_HHmmss"
             ).format(new java.util.Date());
             let imageFileName = "JPEG_" + timeStamp + "_";
-            let storageDir = application.android.foregroundActivity.getExternalFilesDir(
+            let storageDir = application.android.startActivity.getExternalFilesDir(
                 android.os.Environment.DIRECTORY_PICTURES
             );
             image = java.io.File.createTempFile(
@@ -253,7 +253,7 @@ export class Nativemediapicker {
         return image;
     }
     getFileType(uri) {
-        let type = application.android.foregroundActivity.getContentResolver().getType(uri);
+        let type = application.android.startActivity.getContentResolver().getType(uri);
         return type.split("/")[0];
     }
     captureVideo() {
@@ -262,10 +262,10 @@ export class Nativemediapicker {
         );
         if (
             takeVideoIntent.resolveActivity(
-                application.android.foregroundActivity.getPackageManager()
+                application.android.startActivity.getPackageManager()
             ) != null
         ) {
-            application.android.foregroundActivity.startActivityForResult(
+            application.android.startActivity.startActivityForResult(
                 takeVideoIntent,
                 this.REQ_VIDEO
             );
@@ -275,7 +275,7 @@ export class Nativemediapicker {
         let intent = new android.content.Intent(
             android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION
         );
-        application.android.foregroundActivity.startActivityForResult(
+        application.android.startActivity.startActivityForResult(
             intent,
             this.REQ_AUDIO
         );
